@@ -1,6 +1,5 @@
 FROM bwainstock/python:2.7-centos
 VOLUME /app
 WORKDIR /app
-RUN echo 'alias yum="yum --nogpg"' >> ~/.bashrc &&\
-	/bin/bash -c "source ~/.bashrc"
-CMD ["/bin/bash", "-c", "nosetests", "-v"]
+RUN find /etc/yum.repos.d/ -name "*.repo" | xargs -n1 sed -i 's/gpgcheck=1/gpgcheck=0/g'
+CMD ["nosetests", "-v"]
