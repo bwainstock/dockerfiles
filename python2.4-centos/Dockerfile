@@ -7,4 +7,6 @@ RUN tar zxf $NOSE_VERSION.tar.gz &&\
 	python setup.py install &&\
 	cd .. &&\
 	rm -rf $NOSE_VERSION $NOSE_VERSION.tar.gz
+RUN rm -rf /etc/yum.repos.d/*
+COPY CentOS-Vault.repo /etc/yum.repos.d/
 CMD ["/bin/sh"]
