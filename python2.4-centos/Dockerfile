@@ -9,4 +9,5 @@ RUN tar zxf $NOSE_VERSION.tar.gz &&\
 	rm -rf $NOSE_VERSION $NOSE_VERSION.tar.gz
 RUN rm -rf /etc/yum.repos.d/*
 COPY CentOS-Vault.repo /etc/yum.repos.d/
+RUN yum update -y
 CMD ["/bin/sh"]
